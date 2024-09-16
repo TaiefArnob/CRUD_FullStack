@@ -11,7 +11,7 @@ const PatientsList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/patients");
+        const response = await axios.get("/api/patients");
         setPatients(response.data);
       } catch (error) {
         toast.error("Error fetching patients", { position: "top-right" });
@@ -22,7 +22,7 @@ const PatientsList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/api/delete/${id}`);
+      await axios.delete(`/api/delete/${id}`);
       setPatients(patients.filter(patient => patient._id !== id));
       toast.success("Patient deleted successfully", { position: "top-right" });
     } catch (error) {

@@ -14,8 +14,8 @@ const EditPatient = () => {
     address: '',
   };
 
-  const { id } = useParams(); // Get the patient ID from the URL
-  const navigate = useNavigate(); // For navigation after successful update
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [patient, setPatient] = useState(initialPatientState);
 
   const inputChangeHandler = (e) => {
@@ -25,7 +25,7 @@ const EditPatient = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/patient/${id}`)
+      .get(`/api/patient/${id}`)
       .then((response) => {
         setPatient(response.data);
       })
@@ -38,7 +38,7 @@ const EditPatient = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.put(`http://localhost:8000/api/update/${id}`, patient);
+      const response = await axios.put(`/api/update/${id}`, patient);
 
       if (response.data.message) {
         toast.success(response.data.message, { position: 'top-right' });
