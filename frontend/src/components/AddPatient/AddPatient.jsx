@@ -30,7 +30,7 @@ const AddPatient = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('/api/create', patient);
+      const response = await axios.post('https://crud-backend-isd8.onrender.com/api/create', patient);
 
       if (response.data.message) {
         toast.success(response.data.message, { position: 'top-right' });

@@ -25,7 +25,7 @@ const EditPatient = () => {
 
   useEffect(() => {
     axios
-      .get(`/api/patient/${id}`)
+      .get(`https://crud-backend-isd8.onrender.com/api/patient/${id}`)
       .then((response) => {
         setPatient(response.data);
       })
@@ -38,7 +38,7 @@ const EditPatient = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.put(`/api/update/${id}`, patient);
+      const response = await axios.put(`https://crud-backend-isd8.onrender.com/api/update/${id}`, patient);
 
       if (response.data.message) {
         toast.success(response.data.message, { position: 'top-right' });
